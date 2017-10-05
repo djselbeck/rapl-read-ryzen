@@ -164,7 +164,7 @@ static int rapl_msr_amd_core() {
 		package[i] = package_raw * energy_unit_d;
 	}
 
-	sleep(1);
+	usleep(100000);
 	for (int i = 0; i < total_cores/2; i++) {
 		core_energy_raw = read_msr(fd[i], AMD_MSR_CORE_ENERGY);
 		package_raw = read_msr(fd[i], AMD_MSR_PACKAGE_ENERGY);
@@ -175,9 +175,9 @@ static int rapl_msr_amd_core() {
 
 	double sum = 0;
 	for(int i = 0; i < total_cores/2; i++) {
-		double diff = (core_energy_delta[i] - core_energy[i]);
+		double diff = (core_energy_delta[i] - core_energy[i])*10;
 		sum += diff;
-		printf("Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i]));
+		printf("Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i])*10);
 	}
 	
 	printf("Core sum: %gW\n", sum);
