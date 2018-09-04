@@ -137,7 +137,7 @@ static int rapl_msr_amd_core() {
 	int *fd = (int*)malloc(sizeof(int)*total_cores/2);
 	
 	for (int i = 0; i < total_cores/2; i++) {
-		fd[i] = open_msr(i);
+		fd[i] = open_msr(i*2);
 	}
 	
 	int core_energy_units = read_msr(fd[0], AMD_MSR_PWR_UNIT);

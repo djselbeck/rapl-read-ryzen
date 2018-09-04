@@ -11,5 +11,6 @@ gcc -o ryzen ryzen.c -lm
 Needs access to /dev/cpu/CPUNO/msr files. So may need root rights
 
 ## Tested on: ##
+ * AMD Ryzen Threadripper 2990WX
  * AMD Ryzen Threadripper 1950x
  * AMD Epyc 7501
